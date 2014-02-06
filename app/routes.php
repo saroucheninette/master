@@ -11,14 +11,19 @@
 |
 */
 
-Route::get('/', function()
+
+
+//LOGIN / LOGOUT
+Route::get('login', '\App\Controllers\LoginController@index');
+Route::post('login', '\App\Controllers\LoginController@login');
+Route::get('logout', '\App\Controllers\LoginController@logout');
+
+//AUTH ROUTES
+Route::group(array('before' => 'auth'), function()
 {
-    return View::make('index');
+    Route::get('/', '\App\Controllers\HomeController@index');
+    
+
 });
 
-Route::get('users', function()
-{
-   $users = Users::all();
 
-    return View::make('users.index')->with('users', $users);
-});

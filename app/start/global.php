@@ -15,6 +15,7 @@ ClassLoader::addDirectories(array(
 
 	app_path().'/commands',
 	app_path().'/controllers',
+        app_path().'/drivers',
 	app_path().'/models',
 	app_path().'/database/seeds',
 
@@ -79,3 +80,25 @@ App::down(function()
 */
 
 require app_path().'/filters.php';
+
+/*
+|--------------------------------------------------------------------------
+| Extends Auth driver
+|--------------------------------------------------------------------------
+|
+*/
+/*Auth::extend('ldap', function() {
+    $provider =  new \Drivers\LdapUserProvider();
+    return new \Illuminate\Auth\Guard($provider, App::make('session.store'));
+});*/
+
+/*
+|--------------------------------------------------------------------------
+| Bind applis
+|--------------------------------------------------------------------------
+|
+*/
+App::bind(
+    'Illuminate\Support\Contracts\MessageProviderInterface',
+    'Illuminate\Support\MessageBag'
+);

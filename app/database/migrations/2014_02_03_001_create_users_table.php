@@ -25,7 +25,7 @@ class CreateUsersTable extends Migration {
             $table->string('Department', 500)->nullable();
             $table->string('PhoneNumber1', 50)->nullable();
             $table->string('PhoneNumber2', 50)->nullable();
-            $table->longtext('CN')->nullable();
+            $table->string('CN',500)->nullable();
             $table->dateTime('DateLastLogOn')->nullable();
             $table->dateTime('DateLastLogOff')->nullable();
             $table->integer('IsDeleted');
@@ -52,9 +52,23 @@ class CreateUsersTable extends Migration {
         DB::table('Users')->insert(
                 array(
                     'Profiles_id' => 1, //Administrator
+                    'Alias' => 'system',
+                    'Email' => 'system',
+                    'Password' => Hash::make('system'),
+                    'LastName' => 'System',
+                    'FirstName' => 'System',
+                    'IsDeleted' => 0,
+                    'IsActive' => 1,
+                    'IsPublic' => 1,
+                    'DateCreated'=> $dateTime->format('Y-m-d H:i:s')
+                    
+                ));
+        DB::table('Users')->insert(
+                array(
+                    'Profiles_id' => 1, //Administrator
                     'Alias' => 'admin',
                     'Email' => 'admin@changethismail.fr',
-                    'Password' => md5('admin'),
+                    'Password' => Hash::make('admin'),
                     'LastName' => 'Admin',
                     'FirstName' => 'Admin',
                     'IsDeleted' => 0,

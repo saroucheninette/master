@@ -421,21 +421,17 @@ ul.dropdown-items > li a:hover {
     top: 14px;
 }
 /* User Dropdown Menu */
-.user-menu .dropdown-lockout {
-    width: 50%;
-    float: left;
-    font-size: 13px;
-    padding: 11px 0 11px 15px;
-    background: #fff;
-    border-top: 1px solid #bbb;
-}
 .user-menu .dropdown-signout {
-    width: 50%;
-    float: left;
+    width: 100%;
+    float: right;
     padding: 11px 5px 11px 15px;
     background: #fff;
     border-left: 1px dashed #ccc;
     border-top: 1px solid #bbb;
+}
+.user-menu .dropdown-signout a {
+    float:right;
+    margin-right:10px;
 }
 /* User Dropdown Menu - Signout Buttons */
 .user-menu .dropdown-lockout .fa, .user-menu .dropdown-signout .fa {

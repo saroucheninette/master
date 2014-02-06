@@ -4,12 +4,8 @@
 	"keywords": ["framework", "laravel"],
 	"license": "MIT",
 	"require": {
-		"laravel/framework": "4.1.*",
-                "illuminate/support": "~4",
-                "doctrine/dbal": "~2.3",
-                "way/generators": "dev-master",
-		"barryvdh/laravel-migration-generator": "dev-master",
-                "raahul/larryfour": "1.*"
+		"laravel/framework": "4.0.*",
+                "wells/l4-ldap-ntlm": "dev-master"
 	},
 	"autoload": {
 		"classmap": [

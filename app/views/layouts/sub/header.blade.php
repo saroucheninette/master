@@ -9,7 +9,7 @@
 
   <div class="pull-right header-btns">
       <div class="btn-group user-menu">
-      <button type="button" class="btn btn-sm dropdown-toggle" data-toggle="dropdown"> <span class="glyphicons glyphicons-user"></span> <b>Holladay</b> </button>
+      <button type="button" class="btn btn-sm dropdown-toggle" data-toggle="dropdown"> <span class="glyphicons glyphicons-user"></span> <b>{{ Auth::user()->username }}</b> </button>
       <button type="button" class="btn btn-default btn-gradient btn-sm dropdown-toggle padding-none" data-toggle="dropdown"> <img src="{{ URL::asset('assets/images/form/arrow-down.png')}}" alt="user avatar" width="28" height="28" /> </button>
       <ul class="dropdown-menu checkbox-persist" role="menu">
         <li class="menu-arrow">
@@ -28,8 +28,7 @@
               <div class="item-icon"><i class="fa fa-cog"></i> </div>
               <a class="item-message" href="customizer.html">Settings</a> </li>
             <li class="padding-none">
-              <div class="dropdown-lockout"><i class="fa fa-lock"></i> <a href="screen-lock.html">Screen Lock</a></div>
-              <div class="dropdown-signout"><i class="fa fa-sign-out"></i> <a href="login.html">Sign Out</a></div>
+              <div class="dropdown-signout"><i class="fa fa-sign-out" style="float:right;"></i> <a href="{{ URL::to('logout')}}">{{ trans('auth.logout') }}</a></div>
             </li>
           </ul>
         </li>

@@ -45,10 +45,10 @@
             var boxtest = localStorage.getItem('boxed'); 
             if (boxtest === 'true') {document.body.className+=' boxed-layout';} 
         </script>
-        @include('layouts.header')
+        @include('layouts.sub.header')
         <!-- Start: Main -->
         <div id="main" style="display:block"> 
-            @include('layouts.sidebar')
+            @include('layouts.sub.sidebar')
             <section id="content">
                 <div id="topbar">
                     <ol class="breadcrumb">
