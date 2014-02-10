@@ -19,8 +19,8 @@ class CreateHosttypesTable extends Migration {
             $table->integer('IsDeleted');
             $table->integer('IsActive');
             $table->integer('IsPublic');
-            $table->integer('Users_id_created');
-            $table->integer('Users_id_updated');
+            $table->integer('Users_id_created')->index();
+            $table->integer('Users_id_updated')->index()->nullable();
             $table->dateTime('DateCreated');
             $table->dateTime('DateUpdated')->nullable();
         });
@@ -31,6 +31,51 @@ class CreateHosttypesTable extends Migration {
            $table->foreign('Users_id_updated')
                  ->references('Users_id')->on('users');
         });
+         $dateTime = new DateTime('now');
+        DB::table('HostTypes')->insert(
+                array(
+                    'HostTypes_id' => 'SER',
+                    'Label'=> 'Server',
+                    'DescriptionText' => 'Server',
+                    'IsDeleted'=>0,
+                    'IsActive'=>1,
+                    'IsPublic'=>1,
+                    'Users_id_created'=>1,
+                    'DateCreated'=> $dateTime->format('Y-m-d H:i:s')
+                ));
+        DB::table('HostTypes')->insert(
+                array(
+                    'HostTypes_id' => 'DES',
+                    'Label'=> 'Desktop',
+                    'DescriptionText' => 'Desktop',
+                    'IsDeleted'=>0,
+                    'IsActive'=>1,
+                    'IsPublic'=>1,
+                    'Users_id_created'=>1,
+                    'DateCreated'=> $dateTime->format('Y-m-d H:i:s')
+                ));
+        DB::table('HostTypes')->insert(
+                array(
+                    'HostTypes_id' => 'LAP',
+                    'Label'=> 'Laptop',
+                    'DescriptionText' => 'Laptop',
+                    'IsDeleted'=>0,
+                    'IsActive'=>1,
+                    'IsPublic'=>1,
+                    'Users_id_created'=>1,
+                    'DateCreated'=> $dateTime->format('Y-m-d H:i:s')
+                ));
+        DB::table('HostTypes')->insert(
+                array(
+                    'HostTypes_id' => 'SEV',
+                    'Label'=> 'Virtual server',
+                    'DescriptionText' => 'Virtual server',
+                    'IsDeleted'=>0,
+                    'IsActive'=>1,
+                    'IsPublic'=>1,
+                    'Users_id_created'=>1,
+                    'DateCreated'=> $dateTime->format('Y-m-d H:i:s')
+                ));
     }
 
     /**

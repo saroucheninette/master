@@ -24,6 +24,7 @@ class CreateProfilesTable extends Migration {
             $table->string('HistoryPermissions',30);
             $table->string('HostPermissions',30);
             $table->string('CommentPermissions',30);
+            $table->string('AdminPermissions',30);
             $table->integer('IsDeleted');
             $table->integer('IsActive');
             $table->integer('IsPublic');
@@ -53,6 +54,7 @@ class CreateProfilesTable extends Migration {
                     'HistoryPermissions' => '1;1;1;1;1',
                     'HostPermissions' => '1;1;1;1;1',
                     'CommentPermissions' => '1;1;1;1;1',
+                    'AdminPermissions' => '1;1;1;1;1',
                     'IsDeleted'=>0,
                     'IsActive'=>1,
                     'IsPublic'=>1,
@@ -70,6 +72,7 @@ class CreateProfilesTable extends Migration {
                     'HistoryPermissions' => '1;0;0;0;0',
                     'HostPermissions' => '1;0;0;0;0',
                     'CommentPermissions' => '1;0;0;0;0',
+                    'AdminPermissions' => '0;0;0;0;0',
                     'IsDeleted'=>0,
                     'IsActive'=>1,
                     'IsPublic'=>1,
@@ -87,6 +90,7 @@ class CreateProfilesTable extends Migration {
                     'HistoryPermissions' => '1;0;0;0;0',
                     'HostPermissions' =>'1;1;0;0;0',
                     'CommentPermissions' => '1;1;1;0;0',
+                    'AdminPermissions' => '0;0;0;0;0',
                     'IsDeleted'=>0,
                     'IsActive'=>1,
                     'IsPublic'=>1,

@@ -11,8 +11,10 @@
     <div id="sidebar-menu">
       <ul class="nav sidebar-nav">
         <li> <a href="{{ URL::to('/') }}"><span class="glyphicons glyphicons-star"></span><span class="sidebar-title">{{ trans('menu.dashboard') }}</span></a> </li>
+       @if(Perm::Instance()->CanRead('ticket'))
         <li> <a href="{{ URL::to('/tickets') }}"><span class="glyphicons glyphicons-sort"></span><span class="sidebar-title">{{ trans('menu.tickets') }}</span></a> </li>
-       
+       @endif
+        @if(Perm::Instance()->CanRead('admin'))
         <li> <a class="accordion-toggle" href="#resources"><span class="glyphicons glyphicons-settings"></span><span class="sidebar-title">{{ trans('menu.admtools') }}</span><span class="caret"></span></a>
           <ul id="resources" class="nav sub-nav">
             <li><a href="customizer.html"><span class="glyphicons glyphicons-edit"></span> Theme Customizer</a></li>
@@ -20,6 +22,7 @@
             <li><a href="documentation/index.html"><span class="glyphicons glyphicons-book"></span> Documentation </a></li>
           </ul>
         </li>
+        @endif
       </ul>
     </div>
   </aside>

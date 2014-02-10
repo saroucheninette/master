@@ -10,14 +10,15 @@
 <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,700">
 
 <!-- Core CSS  -->
-<link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/plugins/bootstrap/bootstrap.min.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/plugins/bootstrap/bootstrap.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/css/font-awesome.min.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/fonts/glyphicons.min.css') }}">
 
 <!-- Plugin CSS -->
 <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/plugins/calendar/fullcalendar.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/plugins/datatables/datatables.min.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/plugins/datatables/datatables.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/css/animate.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/plugins/datepicker/datepicker.css') }}">
 
 <!-- Theme CSS -->
 <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/css/theme.css') }}">
@@ -30,6 +31,7 @@
 <!-- My Custom CSS -->
 <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/css/custom.css') }}">
 
+@yield('css')
 <!-- Favicon -->
 <link rel="shortcut icon" href="images/favicon.ico">
 
@@ -40,7 +42,7 @@
 <![endif]-->
 
 </head>
-    <body class="dashboard index-load">
+    <body class="dashboard index-load" style="background-color: rgb(255, 255, 255); overflow: visible; background-position: initial initial; background-repeat: initial initial;"> 
         <script> 
             var boxtest = localStorage.getItem('boxed'); 
             if (boxtest === 'true') {document.body.className+=' boxed-layout';} 
@@ -68,7 +70,7 @@
         
         <!-- Core Javascript - via CDN -->
         <script src="{{ URL::asset('assets/plugins/jquery/jquery.min.js') }}"></script>
-        <script src="{{ URL::asset('assets/plugins/jqueryui/jquery-ui.min.js') }}"></script>
+        <script src="{{ URL::asset('assets/plugins/jqueryui/jquery-ui.js') }}"></script>
         <script src="{{ URL::asset('assets/plugins/bootstrap/bootstrap.min.js') }}"></script>
 
         <!-- Plugins - Via CDN -->
@@ -80,58 +82,26 @@
         <!-- Plugins -->
         <script type="text/javascript" src="{{ URL::asset('assets/plugins/calendar/gcal.js') }}"></script><!-- Calendar Addon -->
         <script type="text/javascript" src="{{ URL::asset('assets/plugins/flot/jquery.flot.resize.min.js') }}"></script><!-- Flot Charts Addon -->
-        <script type="text/javascript" src="{{ URL::asset('assets/plugins/datatables.js') }}"></script><!-- Datatable Bootstrap Addon -->
-
+        <script type="text/javascript" src="{{ URL::asset('assets/plugins/datatables/datatables.js') }}"></script><!-- Datatable Bootstrap Addon -->
+        <script type="text/javascript" src="{{ URL::asset('assets/plugins/datepicker/bootstrap-datepicker.js') }}"></script><!-- DatePicker Bootstrap Addon -->
+        @yield('jsplugins')
+        
         <!-- Theme Javascript -->
         <script type="text/javascript" src="{{ URL::asset('assets/js/uniform.min.js') }}"></script>
         <script type="text/javascript" src="{{ URL::asset('assets/js/main.js') }}"></script>
         <!--<script type="text/javascript" src="js/plugins.js"></script>-->
         <script type="text/javascript" src="{{ URL::asset('assets/js/custom.js') }}"></script>
-    
+        
+        
        <script type="text/javascript">
         jQuery(document).ready(function() {
-	  
-	// Init Theme Core 	  
-	Core.init();
-	//$('header').css("display", "block");
-
-       
-        /* // Create an example page animation. Really
-	// not suitable for production enviroments
-	var headerAnimate = setTimeout(function() {
-		// Animate Header from Top
-		$('header').css("display", "block").addClass('animated bounceInDown');
-	},300);
-	
-	// Add an aditional delay to hide the loading spinner
-	// and animate body content from bottom of page
-	var bodyAnimate = setTimeout(function() {
-		// hide spinner
-		$('#page-loader').css("display", "none");
-		
-		// show body and animate from bottom. At end of animation 
-		// add several css properties because the animation will bug 
-		// existing psuedo backgrounds(:after)
-		$('#main').css("display", "block").addClass('animated animated-short bounceInUp').one('webkitAnimationEnd oanimationend msAnimationEnd animationend', function(){
-			$('header').removeClass('animated bounceInDown');
-			$('#main').removeClass('animated animated-short bounceInUp')
-			$('body').css({background: "#FFFFFF", overflow: "visible"});
-			$('#content, #sidebar').addClass('refresh');
-			// Init sparkline animations
-			sparkload();
-		});				
-	 },1150);*/
-	
-	
-	
-		
-	
-     
-
-			  
-
-});
-</script>
+            // Init Theme Core 	  
+            Core.init();
+            
+           
+        });
+        </script>
+         @yield('jscode')
 
     </body>
 </html>

@@ -76,12 +76,13 @@ class L4LdapNtlmUserProvider implements UserProviderInterface
 	{
             $user = \App\Models\Users::find($identifier);
             if(empty($user)) return;
-            
+                       
             return new GenericUser(array(
                'id'         => $user->Users_id,
                 'username'  => $user->Alias,
                 'CN'        => $user->CN,
                 'realname' => $user->FistName.' '.$user->LastName,
+                'profile' => $user->Profiles_id
                      
              ));
 	}
@@ -112,6 +113,7 @@ class L4LdapNtlmUserProvider implements UserProviderInterface
                'id'         => $this->model->Users_id,
                 'username'  => $this->model->Alias,
                 'CN'        => $this->model->CN,
+                'active'    => $this->model->IsActive
                      
              ));
                  
@@ -127,10 +129,9 @@ class L4LdapNtlmUserProvider implements UserProviderInterface
 	*/    
 	public function validateCredentials(UserInterface $user, array $credentials)
 	{
-            
 		if($user == NULL) return FALSE;
 		if($credentials['Password'] == '') return FALSE;
-                if($credentials['IsActive'] == 0) return FALSE;
+                if($user->active == 0) return FALSE;
                 
                 //try to connect
                 $ldapconn = ldap_connect("ldap://{$this->config->LDAP_ServerName}");    

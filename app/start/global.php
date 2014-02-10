@@ -15,8 +15,8 @@ ClassLoader::addDirectories(array(
 
 	app_path().'/commands',
 	app_path().'/controllers',
-        app_path().'/drivers',
 	app_path().'/models',
+      //  app_path().'/macros.php',
 	app_path().'/database/seeds',
 
 ));
@@ -102,3 +102,10 @@ App::bind(
     'Illuminate\Support\Contracts\MessageProviderInterface',
     'Illuminate\Support\MessageBag'
 );
+/*
+|--------------------------------------------------------------------------
+| Form Macros Load
+|--------------------------------------------------------------------------
+|
+*/
+include_once app_path().'/macros.php';

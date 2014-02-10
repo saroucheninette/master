@@ -20,7 +20,7 @@ class CreateTicketimpactsTable extends Migration {
             $table->integer('IsActive');
             $table->integer('IsPublic');
             $table->integer('Users_id_created')->index();
-            $table->integer('Users_id_updated')->index();
+            $table->integer('Users_id_updated')->index()->nullable();
             $table->dateTime('DateCreated');
             $table->dateTime('DateUpdated')->nullable();
         });
@@ -31,6 +31,40 @@ class CreateTicketimpactsTable extends Migration {
            $table->foreign('Users_id_updated')
                  ->references('Users_id')->on('Users');
         });
+         $dateTime = new DateTime('now');
+        DB::table('TicketImpacts')->insert(
+                array(
+                    'Impacts_id' => 'LOW',
+                    'Label'=> 'Low',
+                    'DescriptionText' => 'Low impact',
+                    'IsDeleted'=>0,
+                    'IsActive'=>1,
+                    'IsPublic'=>1,
+                    'Users_id_created'=>1,
+                    'DateCreated'=> $dateTime->format('Y-m-d H:i:s')
+                ));
+        DB::table('TicketImpacts')->insert(
+                array(
+                    'Impacts_id' => 'MED',
+                    'Label'=> 'Medium',
+                    'DescriptionText' => 'Medium impact',
+                    'IsDeleted'=>0,
+                    'IsActive'=>1,
+                    'IsPublic'=>1,
+                    'Users_id_created'=>1,
+                    'DateCreated'=> $dateTime->format('Y-m-d H:i:s')
+                ));
+        DB::table('TicketImpacts')->insert(
+                array(
+                    'Impacts_id' => 'HIG',
+                    'Label'=> 'High',
+                    'DescriptionText' => 'High impact',
+                    'IsDeleted'=>0,
+                    'IsActive'=>1,
+                    'IsPublic'=>1,
+                    'Users_id_created'=>1,
+                    'DateCreated'=> $dateTime->format('Y-m-d H:i:s')
+                ));
     }
 
     /**

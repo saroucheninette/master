@@ -17,12 +17,13 @@ table.table {
 table.table thead .sorting, table.table thead .sorting_asc, table.table thead .sorting_desc, table.table thead .sorting_asc_disabled, table.table thead .sorting_desc_disabled {
     cursor: pointer;
     *cursor: hand;
+    height: 30px;
 }
-table.table thead .sorting { background: url('../images/sort_both.png') no-repeat center right }
-table.table thead .sorting_asc { background: url('../images/sort_asc.png') no-repeat center right }
-table.table thead .sorting_desc { background: url('../images/sort_desc.png') no-repeat center right }
-table.table thead .sorting_asc_disabled { background: url('../images/sort_asc_disabled.png') no-repeat center right }
-table.table thead .sorting_desc_disabled { background: url('../images/sort_desc_disabled.png') no-repeat center right }
+table.table thead .sorting { background: url('../datatables/images/sort_both.png') no-repeat center right }
+table.table thead .sorting_asc { background: url('../datatables/images/sort_asc.png') no-repeat center right }
+table.table thead .sorting_desc { background: url('../datatables/images/sort_desc.png') no-repeat center right }
+table.table thead .sorting_asc_disabled { background: url('../datatables/images/sort_asc_disabled.png') no-repeat center right }
+table.table thead .sorting_desc_disabled { background: url('../datatables/images/sort_desc_disabled.png') no-repeat center right }
 table.dataTable th:active { outline: none }
 /* Scrolling */
 div.dataTables_scrollHead table {
@@ -81,6 +82,12 @@ div.DTTT_print_info p {
     font-size: 14px;
     line-height: 20px;
 }
+div.DTTT_container {
+	position: absolute;
+	float: none;
+	right: 0;
+	top: -58px;
+}
 /*
  * FixedColumns styles
  */
@@ -105,16 +112,18 @@ div.DTFC_LeftFootWrapper table { border-top: none }
  * JQUERY Data Table
  */
 table.dataTable {
-    margin: 0 auto;
+    margin-top: 15px;
     clear: both;
     width: 100%;
 }
+
 table.dataTable thead th {
     padding: 3px 18px 3px 10px;
     border-bottom: 1px solid black;
     font-weight: bold;
     cursor: pointer;
     *cursor: hand;
+    min-width: 30px;
 }
 table.dataTable tfoot th {
     padding: 3px 18px 3px 10px;
@@ -143,6 +152,14 @@ table.dataTable tr.even td.sorting_3 { background-color: #F9F9FF }
  * Page length menu
  */
 .dataTables_length { float: left }
+.dataTables_length .chosen-container-single .chosen-single {
+	height: 30px;
+	line-height: 28px;
+	background: #FFF;
+}
+.dataTables_length .chosen-container-single .chosen-single div {
+	top: 3px
+}
 /*
  * Filter
  */
@@ -150,6 +167,20 @@ table.dataTable tr.even td.sorting_3 { background-color: #F9F9FF }
     float: right;
     text-align: right;
 }
+div.dataTables_filter input {
+	line-height: 1.428571429;
+	padding: 3px 8px;
+	color: #999;
+	outline: none;
+	background: #FFF;
+	max-height: 30px;
+	height: 29px;
+	border-radius: 4px;
+	border: 1px solid #ccc;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+	box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+}
+
 /*
  * Table information
  */
@@ -231,11 +262,11 @@ table.dataTable tr.even td.sorting_3 { background-color: #F9F9FF }
 /*
  * Sorting
  */
-.sorting { background: url('../images/sort_both.png') no-repeat center right }
-.sorting_asc { background: url('../images/sort_asc.png') no-repeat center right }
-.sorting_desc { background: url('../images/sort_desc.png') no-repeat center right }
-.sorting_asc_disabled { background: url('../images/sort_asc_disabled.png') no-repeat center right }
-.sorting_desc_disabled { background: url('../images/sort_desc_disabled.png') no-repeat center right }
+.sorting { background: url('../datatables/images/sort_both.png') no-repeat center right }
+.sorting_asc { background: url('../datatables/images/sort_asc.png') no-repeat center right }
+.sorting_desc { background: url('../datatables/images/sort_desc.png') no-repeat center right }
+.sorting_asc_disabled { background: url('../datatables/images/sort_asc_disabled.png') no-repeat center right }
+.sorting_desc_disabled { background: url('../datatables/images/sort_desc_disabled.png') no-repeat center right }
 table.dataTable thead th:active, table.dataTable thead td:active { outline: none }
 /*
  * Scrolling

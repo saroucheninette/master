@@ -6,6 +6,7 @@ use \Illuminate\Support\Facades\View;
 use \Illuminate\Support\Facades\Auth;
 use \Illuminate\Support\Facades\Redirect;
 use \Illuminate\Support\Facades\Lang;
+use \App\Models\Users;
 
 class LoginController extends BaseController {
     protected $layout = "layouts.auth";
@@ -22,8 +23,10 @@ class LoginController extends BaseController {
     public function login() {
         $username = $_POST["username"];
         $password = $_POST["password"];
-        if (Auth::attempt(array('Alias' => $username, 'Password' => $password, 'IsActive' => 1)))
+        if (Auth::attempt(array('Alias' => $username, 'Password' => $password)))
         {
+            $user =  \App\Models\Users::find(Auth::user()->id);
+            $user->update(array('DateLastLogOn' => \App\Utils\DateUtil::DateNowString()));
             return Redirect::to('/');
         }
         else
@@ -39,7 +42,9 @@ class LoginController extends BaseController {
      public function logout() {
          if(Auth::user())
          {
-             Auth::logout();
+            $user =  \App\Models\Users::find(Auth::user()->id);
+            $user->update(array('DateLastLogOff' => \App\Utils\DateUtil::DateNowString()));
+            Auth::logout();
          }
          return Redirect::to('login');
      }

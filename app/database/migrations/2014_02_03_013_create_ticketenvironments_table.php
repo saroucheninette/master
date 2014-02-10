@@ -13,13 +13,14 @@ class CreateTicketenvironmentsTable extends Migration {
     {
         Schema::create('TicketEnvironments', function($table) {
             $table->increments('Environments_id');
+            $table->integer('Environments_parent_id')->nullable();
             $table->string('Label', 255);
             $table->longtext('DescriptionText')->nullable();
             $table->integer('IsDeleted');
             $table->integer('IsActive');
             $table->integer('IsPublic');
             $table->integer('Users_id_created')->index();
-            $table->integer('Users_id_updated')->index();
+            $table->integer('Users_id_updated')->index()->nullable();
             $table->dateTime('DateCreated');
             $table->dateTime('DateUpdated')->nullable();
         });
@@ -30,6 +31,37 @@ class CreateTicketenvironmentsTable extends Migration {
            $table->foreign('Users_id_updated')
                  ->references('Users_id')->on('Users');
         });
+        $dateTime = new DateTime('now');
+        DB::table('TicketEnvironments')->insert(
+                array(
+                    'Label'=> 'Demat',
+                    'DescriptionText' => 'Demat',
+                    'IsDeleted'=>0,
+                    'IsActive'=>1,
+                    'IsPublic'=>1,
+                    'Users_id_created'=>1,
+                    'DateCreated'=> $dateTime->format('Y-m-d H:i:s')
+                ));
+        DB::table('TicketEnvironments')->insert(
+                array(
+                    'Label'=> 'Logitours',
+                    'DescriptionText' => 'Logitours',
+                    'IsDeleted'=>0,
+                    'IsActive'=>1,
+                    'IsPublic'=>1,
+                    'Users_id_created'=>1,
+                    'DateCreated'=> $dateTime->format('Y-m-d H:i:s')
+                ));
+        DB::table('TicketEnvironments')->insert(
+                array(
+                    'Label'=> 'TravelBox',
+                    'DescriptionText' => 'TravelBox',
+                    'IsDeleted'=>0,
+                    'IsActive'=>1,
+                    'IsPublic'=>1,
+                    'Users_id_created'=>1,
+                    'DateCreated'=> $dateTime->format('Y-m-d H:i:s')
+                ));
     }
 
     /**

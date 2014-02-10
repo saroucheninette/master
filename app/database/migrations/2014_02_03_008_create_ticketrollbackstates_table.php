@@ -20,7 +20,7 @@ class CreateTicketrollbackstatesTable extends Migration {
             $table->integer('IsActive');
             $table->integer('IsPublic');
             $table->integer('Users_id_created')->index();
-            $table->integer('Users_id_updated')->index();
+            $table->integer('Users_id_updated')->index()->nullable();
             $table->dateTime('DateCreated');
             $table->dateTime('DateUpdated')->nullable();
         });
@@ -31,6 +31,29 @@ class CreateTicketrollbackstatesTable extends Migration {
            $table->foreign('Users_id_updated')
                  ->references('Users_id')->on('Users');
         });
+        $dateTime = new DateTime('now');
+        DB::table('TicketRollbackstates')->insert(
+                array(
+                    'RollbackStates_id' => 'PLN',
+                    'Label'=> 'Planned',
+                    'DescriptionText' => 'Planned',
+                    'IsDeleted'=>0,
+                    'IsActive'=>1,
+                    'IsPublic'=>1,
+                    'Users_id_created'=>1,
+                    'DateCreated'=> $dateTime->format('Y-m-d H:i:s')
+                ));
+        DB::table('TicketRollbackstates')->insert(
+                array(
+                    'RollbackStates_id' => 'NPL',
+                    'Label'=> 'Non planned',
+                    'DescriptionText' => 'Non planned',
+                    'IsDeleted'=>0,
+                    'IsActive'=>1,
+                    'IsPublic'=>1,
+                    'Users_id_created'=>1,
+                    'DateCreated'=> $dateTime->format('Y-m-d H:i:s')
+                ));
     }
 
     /**

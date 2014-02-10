@@ -86,7 +86,7 @@ body {
  * This insures it's only used once and can again be used elsewhere */
 .container { 
     width: 100%;
-    height: 800px;
+    min-height: 800px;
 }
 #content > .container {
     max-width: 1665px !important;
@@ -1213,7 +1213,6 @@ label .checker, label .radio, .form-horizontal label .checker, .form-horizontal 
 /* Panel Tab Navigation must be placed inside
  * ".panel-heading" see Stardom Docs for example */
 .panel-tabs {
-    float: right;
     margin-top: -10px;
 }
 .panel-tabs > li {
