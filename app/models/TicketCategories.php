@@ -9,5 +9,9 @@ class TicketCategories extends BaseModel {
     public $timestamps = false;
     protected $guarded = array('TicketCategories');
     protected $primaryKey = 'Categories_id';
-    
+
+    public function __toString() {
+       $this->Label;
+    }
+   
 }

@@ -30,13 +30,13 @@
                     @foreach($tickets as $t)
                   <tr>
                     <td>{{ $t->Tickets_id }}</td>
-                    <td>{{ $t->TicketTypes_id }}</td>
+                    <td>{{ $t->TicketType() }}</td>
                     <td>{{ $t->Name }}</td>
-                    <td>{{ $t->DescriptionText }}</td>
-                    <td>{{ $t->DateStart }}</td>
-                    <td>{{ $t->DateEnd }}</td>
-                    <td>{{ $t->Users_id_created }}</td>
-                    <td>{{ $t->Categories_id }}</td>
+                    <td>{{ substr($t->DescriptionText,0,50).'...' }}</td>
+                    <td>{{ $t->getDate($t->DateStart) }}</td>
+                    <td>{{ $t->getDate($t->DateEnd) }}</td>
+                    <td>{{ $t->getUser($t->Users_id_created) }}</td>
+                    <td>{{ $t->Category() }}</td>
                     
                    <!-- <td class="hidden-xs text-center"><div class="btn-group">
                         <button type="button" class="btn btn-info btn-gradient"> <span class="glyphicons glyphicons-user"></span> </button>

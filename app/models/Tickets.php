@@ -10,7 +10,7 @@ class Tickets extends BaseModel {
     protected $guarded = array('Tickets_id','_token');
     protected $primaryKey = 'Tickets_id';
     
-    private static $rules = array(
+    protected static $rules = array(
                 'Name' => 'required|min:5',
                 'DateStart' => 'required|date_format:"Y-m-d"',
                 'DateEnd' => 'required|date_format:"Y-m-d"',
@@ -25,11 +25,23 @@ class Tickets extends BaseModel {
                 
         
             );
+   
+  
+   public function Category()
+   {
+        $obj = TicketCategories::find($this->Categories_id);
+        return $obj->Label;
+   }
+   public function Status()
+   {
+        $obj = TicketStatus::find($this->Status_id);
+        return $obj->Label;
+   }
+   public function TicketType()
+   {
+        $obj = TicketTypes::find($this->TicketTypes_id);
+        return $obj->Label;
+   }
     
-    public static function validate($input)
-    {
-        $v = Validator::make($input,self::$rules);
-        return $v;
-    }
    
 }
