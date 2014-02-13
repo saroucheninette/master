@@ -16,6 +16,7 @@
               <table class="table table-striped table-bordered table-hover" id="datatable">
                 <thead>
                   <tr>
+                    <th>{{ trans('messages.action') }}</th>
                     <th>{{ trans('model.id') }}</th>
                     <th>{{ trans('ticket.tickettype') }}</th>
                     <th>{{ trans('model.name') }}</th>
@@ -29,6 +30,7 @@
                 <tbody>
                     @foreach($tickets as $t)
                   <tr>
+                      <td><a href="{{URL::to('/tickets/'.$t->Tickets_id.'/edit')}}">{{ trans('messages.show') }}</a></td>
                     <td>{{ $t->Tickets_id }}</td>
                     <td>{{ $t->TicketType() }}</td>
                     <td>{{ $t->Name }}</td>

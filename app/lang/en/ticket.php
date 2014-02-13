@@ -21,7 +21,8 @@ return array(
     'rollback' => 'Rollback',
     'monitoring' => 'Monitoring',
     'logfile' => 'Log files',
-    'add_ticket' => 'Add a ticket'
+    'add_ticket' => 'Add a ticket',
+    'edit_ticket' => 'Edit a ticket'
 
     
 );

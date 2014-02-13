@@ -24,7 +24,7 @@ class CreateHistoriesTable extends Migration {
             $table->integer('IsActive');
             $table->integer('IsPublic');
             $table->integer('Users_id_created')->index();
-            $table->integer('Users_id_updated')->index();
+            $table->integer('Users_id_updated')->index()->nullable();
             $table->dateTime('DateCreated');
             $table->dateTime('DateUpdated')->nullable();
         });

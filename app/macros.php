@@ -32,8 +32,10 @@ Form::macro('TextBox', function($label,$name,$errors,$width='80%') {
     return $html;
 });
 
-Form::macro('RichTextBox', function($label,$name,$errors) {
-    $value = Input::old($name);
+Form::macro('RichTextBox', function($label,$name,$errors,$value=null) {
+    $value =  empty($value)?Input::old($name):$value;
+    //echo $name;
+    //var_dump($value);die;
     $html = "";
     $html .= Form::label($name, $label, array('class' => 'labelbox'));
     if(!isset($errors->$name)) $html .= "<span class='validation_error'>".$errors->first($name, '<li>:message</li>')."</span>";

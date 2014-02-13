@@ -25,5 +25,5 @@ class Users extends BaseModel implements UserInterface, RemindableInterface {
     public function __toString() {
         return $this->FirstName.' '.$this->LastName;
     }
-    
+   
 }

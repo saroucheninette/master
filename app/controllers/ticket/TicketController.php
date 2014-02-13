@@ -9,6 +9,7 @@ use \Illuminate\Support\Facades\Lang;
 use \Illuminate\Support\Facades\Validator;
 use \Illuminate\Support\Facades\Input;
 use \Illuminate\Support\Facades\Session;
+
 use App\Models\Tickets;
 
 
@@ -41,13 +42,7 @@ class TicketController extends BaseController {
 		if($this->perm->CanAdd($this->model))
                 {
                     $ticket = new Tickets();
-                    $validator = Validator::make(
-                        array('Name' => 'required|min:5'),
-                        array('DescriptionHtml' => 'required') //TODO
-                    );
-
-                    return View::make('tickets.create')->with('ticket',$ticket)
-                                                    ->with('validator',$validator);
+                    return View::make('tickets.create')->with('ticket',$ticket);
                 }
 	}
 
@@ -60,7 +55,8 @@ class TicketController extends BaseController {
 	{
 		 if($this->perm->CanAdd($this->model))
                 {
-                    $validator = Tickets::validate(Input::all());
+                    $ticket = new Tickets();
+                    $validator = $ticket->validate(Input::all());
 
                     if ($validator->fails())
                     {
@@ -70,10 +66,8 @@ class TicketController extends BaseController {
                     }
                     else
                     {
-                        $ticket = new Tickets();
+                        
                         $ticket = $ticket->getObject(Input::get());
-                        $ticket->Users_id_created = Auth::user()->id;
-                        $ticket->DateCreated = \App\Utils\DateUtil::DateNowString();
 			$ticket->save();
                        
 			// redirect
@@ -104,7 +98,8 @@ class TicketController extends BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+            $ticket = Tickets::find($id);
+            return View::make('tickets.edit')->with('ticket',$ticket);
 	}
 
 	/**
@@ -115,7 +110,35 @@ class TicketController extends BaseController {
 	 */
 	public function update($id)
 	{
-		//
+            //Todo own
+            if($this->perm->CanModify($this->model))
+            {
+                    $ticket = new Tickets();
+                    $validator = $ticket->validate(Input::all());
+
+                    if ($validator->fails())
+                    {
+                       return Redirect::to("tickets/$id/edit")
+                                ->withInput()
+				->withErrors($validator);
+                    }
+                    else
+                    {
+                        $ticket = Tickets::find($id);
+                        
+            
+                        $ticket = $ticket->getObject(Input::get());
+
+			$ticket->save();
+                       
+                        
+			// redirect
+			Session::flash('message', 'Successfully updated nerd!');
+			return Redirect::to("tickets/$id/edit")->with('ticket',$ticket);
+                    }
+
+
+           }
 	}
 
 	/**
