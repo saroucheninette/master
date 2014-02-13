@@ -70,3 +70,12 @@ Form::macro('HiddenBox', function($name,$value=null) {
     $html .= Form::hidden($name, $value ,array('id' => $name) );
     return $html;
 });
+
+Form::macro('LabelBox', function($label,$value,$width='80%') {
+
+    $html = "";
+    $html .= "<span class='labelbox'>$label : </span>";
+    $html .= "<b class='labelbox' style='width:$width'>$value</b>";
+ 
+    return $html;
+});

@@ -4144,7 +4144,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .pagination > li > span {
   position: relative;
   float: left;
-  padding: 6px 12px;
+  padding: 5px;
   margin-left: -1px;
   line-height: 1.428571429;
   color: #428bca;

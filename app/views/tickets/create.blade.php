@@ -10,12 +10,13 @@
 {{  Form::model($ticket, array('route' => array('tickets.store'))); }}
 <div class="panel">
     <div class="panel-heading">
-       <div class="panel-title"> <i class="fa fa-pencil"></i> {{ trans('ticket.add_ticket')}} </div>
+       <div class="panel-title"> <i class="fa fa-plus"></i> {{ trans('ticket.add_ticket')}} </div>
        <div style="float:right">
            <input type="submit" value="{{ trans('messages.add')}}" class="btn btn-success btn-gradient" style="font-weight: bold" />
        </div>
     </div>
     @include('tickets._form')
+</div>
 {{ Form::close() }}
 @stop
 @section('jscode')

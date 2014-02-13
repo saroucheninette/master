@@ -13,6 +13,7 @@ return array(
     'choose' => '-- Select --',
     'update_action' => 'Update field ',
     'create_action' => 'Create ',
-    'delete_action' => 'Delete '
+    'delete_action' => 'Delete ',
+    'history' => 'Historical'
     
 );

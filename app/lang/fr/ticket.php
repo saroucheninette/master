@@ -22,7 +22,8 @@ return array(
     'monitoring' => 'Monitoring',
     'logfile' => 'Fichiers logs',
     'add_ticket' => 'Ajouter un ticket',
-    'edit_ticket' => 'Modifier un ticket'
+    'edit_ticket' => 'Modifier un ticket',
+    'show_ticket' => 'Voir le ticket'
 
     
 );

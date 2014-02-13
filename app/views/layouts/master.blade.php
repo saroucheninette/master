@@ -82,7 +82,6 @@
         <!-- Plugins -->
         <script type="text/javascript" src="{{ URL::asset('assets/plugins/calendar/gcal.js') }}"></script><!-- Calendar Addon -->
         <script type="text/javascript" src="{{ URL::asset('assets/plugins/flot/jquery.flot.resize.min.js') }}"></script><!-- Flot Charts Addon -->
-        <script type="text/javascript" src="{{ URL::asset('assets/plugins/datatables/datatables.js') }}"></script><!-- Datatable Bootstrap Addon -->
         <script type="text/javascript" src="{{ URL::asset('assets/plugins/datepicker/bootstrap-datepicker.js') }}"></script><!-- DatePicker Bootstrap Addon -->
         @yield('jsplugins')
         

@@ -87,7 +87,8 @@ class TicketController extends BaseController {
 	 */
 	public function show($id)
 	{
-		//
+            $ticket = Tickets::find($id);
+            return View::make('tickets.show')->with('ticket',$ticket);
 	}
 
 	/**

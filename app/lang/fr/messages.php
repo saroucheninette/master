@@ -13,6 +13,7 @@ return array(
     'choose' => '-- Selectionner --',
     'update_action' => "Mise à jour de l'élément ",
     'create_action' => 'Création du ',
-    'delete_action' => 'Suppression du '
+    'delete_action' => 'Suppression du ',
+    'history' => 'Historique'
 
 );

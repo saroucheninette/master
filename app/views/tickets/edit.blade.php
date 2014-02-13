@@ -16,6 +16,7 @@
        </div>
     </div>
     @include('tickets._form')
+</div>
 {{ Form::close() }}
 @stop
 @section('jscode')

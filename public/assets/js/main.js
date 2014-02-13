@@ -2,6 +2,9 @@
  * http://admindesigns.com/
  * Copyright (c) 2013 Admin Designs;*/
 
+//PARAMETRES
+var lang = 'fr'
+
 /* Core theme functions required for
  * most of the sites vital functionality */
 var Core = function() {
@@ -393,6 +396,22 @@ function richtextbox(id,text_id)
         });
    }
 }
+//Read only
+function ro_richtextbox(id)
+{
+    CKEDITOR.replace(id,
+    {
+        toolbar: [{ name: 'tools', items: [ 'Maximize' ] }],
+        on :
+        {
+           instanceReady : function ( ev )
+           {
+               editor = ev.editor;
+               editor.setReadOnly( true );
+           }
+        }
+    });
+}
 
 
 /* ****************************************
@@ -403,4 +422,21 @@ function datebox($id)
 {
     $('#' + $id).datepicker(
             {format: 'yyyy-mm-dd'});
+}
+
+
+/* ****************************************
+ * DATA TABLE
+ * ****************************************/
+
+function datatable($id)
+{
+    $('#' + $id).dataTable( {
+        "oLanguage": {"sUrl": "../assets/plugins/datatables/lang/"+ lang + ".txt"},
+	"aoColumnDefs": [{ 'bSortable': true, 'aTargets': [ -1 ] }],
+        "sPaginationType": "full_numbers",
+	"iDisplayLength": 5,
+	"aLengthMenu": [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]],
+	"sDom": '<"table_top"fl<"clear">>,<"table_content"t>,<"table_bottom"p<"clear">>'
+  });
 }
