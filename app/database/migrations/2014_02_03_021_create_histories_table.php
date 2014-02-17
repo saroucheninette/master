@@ -14,7 +14,7 @@ class CreateHistoriesTable extends Migration {
         Schema::create('Histories', function($table) {
             $table->increments('Histories_id');
             $table->integer('External_id');
-            $table->string('ExternalTypes_id', 10)->index();
+            $table->string('TableName', 50);
             $table->string('Field', 500)->nullable();
             $table->string('Actions', 500)->nullable();
             $table->longtext('Old_value')->nullable();
@@ -34,10 +34,6 @@ class CreateHistoriesTable extends Migration {
                  ->references('Users_id')->on('users');
            $table->foreign('Users_id_updated')
                  ->references('Users_id')->on('users');
-           $table->foreign('ExternalTypes_id')
-                   ->references('ExternalTypes_id')->on('ExternalTypes');
-
-
         });
     }
 

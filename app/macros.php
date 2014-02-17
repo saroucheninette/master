@@ -24,13 +24,15 @@ Form::macro('Tab', function($label,$index,$errors,$rules=array(),$class="")
 
 Form::macro('TextBox', function($label,$name,$errors,$width='80%') {
 
+    $msg = $errors->getMessages();
+    $error_class = (isset($msg[$name]))?"error":"";
     $value = Input::old($name);
-    $html = "";
-    $html .= Form::label($name, $label, array('class' => 'labelbox'));
-    if(!isset($errors->$name)) $html .= "<span class='validation_error'>".$errors->first($name, '<li>:message</li>')."</span>";
-    $html .= Form::text($name, $value ,array('class' => 'textbox','style' => "width:$width") );
+    $html = '<span class="input-group-addon">'.$label.'</span>';
+    $html .= Form::text($name, $value ,array('id' => $name,'class' => "form-control $error_class",'style' => "width:$width") );
+    if(isset($msg[$name])) $html .= "<label class='$error_class'>".$errors->first($name, ':message').'</label>';
     return $html;
 });
+
 
 Form::macro('RichTextBox', function($label,$name,$errors,$value=null) {
     $value =  empty($value)?Input::old($name):$value;
@@ -43,23 +45,18 @@ Form::macro('RichTextBox', function($label,$name,$errors,$value=null) {
     return $html;
 });
 
-Form::macro('DateBox', function($label,$name,$errors,$width='150px;') {
-    $value = Input::old($name);
-    $html = "";
-    $html .= Form::label($name, $label, array('class' => 'labelbox'));
-    $html .= Form::text($name, $value ,array('class' => 'textbox','style' => "width:$width", "id" => $name ));
-    if(!isset($errors->$name)) $html .= "<span class='validation_error'>".$errors->first($name, '<li>:message</li>')."</span>";
-    return $html;
-});
+
 
 Form::macro('SelectModel', function($label,$name,$model,$errors,$value=null,$width='200px;') {
 
+    $msg = $errors->getMessages();
+    $error_class = (isset($msg[$name]))?"error":"";
     $value = empty($value)?Input::old($name):$value;
     $values = \App\Utils\ListUtil::GetSelectList($model);
     $html = "";
-    $html .= Form::label($name, $label, array('class' => 'labelbox'));
-    if(!isset($errors->$name)) $html .= "<span class='validation_error'>".$errors->first($name, '<li>:message</li>')."</span>";
-    $html .= Form::select($name, $values,$value,array('class' => 'textbox','style' => "width:$width") );
+    $html = '<span class="input-group-addon">'.$label.'</span>';
+    if(isset($msg[$name])) $html .= "<label class='$error_class'>".$errors->first($name, ':message').'</label>';
+    $html .= Form::select($name, $values,$value,array('class' => "form-control $error_class",'style' => "width:$width") );
     return $html;
 });
 

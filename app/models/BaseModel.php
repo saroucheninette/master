@@ -177,7 +177,7 @@ use \Illuminate\Support\Facades\DB;
         {
              $history = new Histories();
              $history->External_id = $id;
-             $history->ExternalTypes_id = $this->type;
+             $history->TableName = $this->table;
              $history->Field = 'ALL';
              $history->Actions = $action;
              $history->Old_value = '';
@@ -194,13 +194,14 @@ use \Illuminate\Support\Facades\DB;
             foreach ($new_values as $key=>$value)
             {
                   //Création de l'historique
-                  if(\App\Utils\CompareUtil::Equals($old_values[$key],$value) == false
+                  $old_value = isset($old_values[$key])?$old_values[$key]:null;
+                  if(\App\Utils\CompareUtil::Equals($old_value,$value) == false
                           && !in_array($key, $guarded)
                           && !in_array($key, $this->guarded_histories))
                   {
                     $history = new Histories();
                     $history->External_id = $id;
-                    $history->ExternalTypes_id = $this->type;
+                    $history->TableName = $this->table;
                     $history->Field = $key;
                     $history->Actions =$action;
                     $history->Old_value = $old_values[$key];
@@ -220,7 +221,7 @@ use \Illuminate\Support\Facades\DB;
         {
              $history = new Histories();
              $history->External_id = $id;
-             $history->ExternalTypes_id = $this->type;
+             $history->TableName = $this->table;
              $history->Field = 'ALL';
              $history->Actions = $action;
              $history->Old_value = '';

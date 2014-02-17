@@ -8,6 +8,7 @@ class Users extends BaseModel implements UserInterface, RemindableInterface {
     protected $table = 'Users';
     public $timestamps = false;
     protected $guarded = array('Users_id', 'Password');
+    protected $guarded_histories = array('DateLastLogOn','DateLastLogOff');
     protected $primaryKey = 'Users_id';
 
     public function getAuthIdentifier() {

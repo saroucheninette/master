@@ -20,6 +20,7 @@ return array(
     'App\\Models\\TicketEnvironments' => $baseDir . '/app/models/TicketEnvironments.php',
     'App\\Models\\TicketImpacts' => $baseDir . '/app/models/TicketImpacts.php',
     'App\\Models\\TicketPriorities' => $baseDir . '/app/models/TicketPriorities.php',
+    'App\\Models\\TicketRollbackstates' => $baseDir . '/app/models/TicketRollbackstates.php',
     'App\\Models\\TicketStatus' => $baseDir . '/app/models/TicketStatus.php',
     'App\\Models\\TicketTypes' => $baseDir . '/app/models/TicketTypes.php',
     'App\\Models\\Tickets' => $baseDir . '/app/models/Tickets.php',

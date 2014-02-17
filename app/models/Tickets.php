@@ -6,7 +6,6 @@ use \Illuminate\Support\Facades\Validator;
 
 class Tickets extends BaseModel {
     protected $table = 'Tickets';
-    protected $type = 'TICKET';
     public $timestamps = false;
     protected $guarded = array('Tickets_id','_token','_method');
     protected $primaryKey = 'Tickets_id';

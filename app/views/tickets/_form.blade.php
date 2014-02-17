@@ -25,21 +25,22 @@
              <div class="panel-body">
               <div class="tab-content padding-none border-none">
                   <div id="tab1" class="tab-pane active">
-                      <div class="form_element">{{ Form::TextBox(trans('model.name'),'Name',$errors);}}</div>
-                     <div class="form_element"> 
-                      {{ Form::DateBox(trans('ticket.datestart'),'DateStart',$errors);}}
-                      {{ Form::DateBox(trans('ticket.dateend'),'DateEnd',$errors);}}
+                     <div class="input-group">{{ Form::TextBox(trans('model.name'),'Name',$errors);}}</div>
+                     <div class="input-group"> 
+                      {{ Form::TextBox(trans('ticket.datestart'),'DateStart',$errors,'150px;');}}
+                      {{ Form::TextBox(trans('ticket.dateend'),'DateEnd',$errors,'150px;');}}
+                       {{ Form::SelectModel(trans('ticket.status'),'Status_id',new \App\Models\TicketStatus(),$errors,'NEW');}}
                      </div>
-                      <div class="form_element">
-                      {{ Form::SelectModel(trans('ticket.status'),'Status_id',new \App\Models\TicketStatus(),$errors,'NEW');}}
+                      <div class="input-group">
+                     
                       {{ Form::SelectModel(trans('ticket.environment'),'Environments_id',new \App\Models\TicketEnvironments(),$errors);}}
                      
                        </div>  
-                      <div class="form_element"> 
+                      <div class="input-group"> 
                            {{ Form::SelectModel(trans('ticket.category'),'Categories_id',new \App\Models\TicketCategories(),$errors);}}
                            {{ Form::SelectModel(trans('ticket.impact'),'Impacts_id',new \App\Models\TicketImpacts(),$errors);}}
                       </div>
-                      <div class="form_element">
+                      <div class="input-group">
                       {{ Form::SelectModel(trans('ticket.tickettype'),'TicketTypes_id',new \App\Models\TicketTypes(),$errors);}}
                       {{ Form::SelectModel(trans('model.active'),'IsActive','YesNo',$errors,1,'80px');}} 
                       {{ Form::SelectModel(trans('model.public'),'IsPublic','YesNo',$errors,1,'80px');}} 
@@ -56,8 +57,12 @@
                       {{ Form::HiddenBox('ResolutionText',$ticket->ResolutionText) }}
                   </div>
                    <div id="tab4" class="tab-pane">
+                       <div class="form_element">
                       {{ Form::SelectModel(trans('ticket.priority'),'Priorities_id',new \App\Models\TicketPriorities(),$errors);}}
-                  </div>
+                      {{ Form::SelectModel(trans('ticket.rollback'),'RollbackStates_id',new \App\Models\TicketRollbackstates(),$errors);}}
+                      </div>
+                           
+                   </div>
               </div>
                  
              </div>
