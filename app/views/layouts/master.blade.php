@@ -57,6 +57,9 @@
                         <li><a href="{{ URL::to('/') }}"><i class="fa fa-home"></i></a></li>
                         @yield('topbar')
                     </ol>
+                    <ol class="breadcrumb right">
+                        <li>{{ trans('messages.entity')}} : {{ Auth::user()->entity}}</li>
+                    </ol>
                 </div>
                 <div class="container">
                     @yield('content')

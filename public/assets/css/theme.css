@@ -497,6 +497,17 @@ ul.dropdown-items > li a:hover {
     font-size: 14px;
     background-color: transparent;
 }
+.breadcrumb.right {
+    float: right;
+    padding-right: 16px;
+    padding-top: 16px;
+    margin-bottom: 0;
+    border-radius: 0;
+    font-size: 14px;
+    background-color: transparent;
+    color: #0088cc;
+}
+
 .breadcrumb .glyphicons {
     font-size: 13px;
     top: 0;

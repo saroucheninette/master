@@ -14,7 +14,7 @@ class CreateHosttypesTable extends Migration {
         Schema::create('HostTypes', function($table) {
             //$table->increments('id');
             $table->string('HostTypes_id', 3)->primary();
-            $table->string('Label', 255);
+            $table->string('Name', 255);
             $table->longtext('DescriptionText')->nullable();
             $table->integer('IsDeleted');
             $table->integer('IsActive');
@@ -35,7 +35,7 @@ class CreateHosttypesTable extends Migration {
         DB::table('HostTypes')->insert(
                 array(
                     'HostTypes_id' => 'SER',
-                    'Label'=> 'Server',
+                    'Name'=> 'Server',
                     'DescriptionText' => 'Server',
                     'IsDeleted'=>0,
                     'IsActive'=>1,
@@ -46,7 +46,7 @@ class CreateHosttypesTable extends Migration {
         DB::table('HostTypes')->insert(
                 array(
                     'HostTypes_id' => 'DES',
-                    'Label'=> 'Desktop',
+                    'Name'=> 'Desktop',
                     'DescriptionText' => 'Desktop',
                     'IsDeleted'=>0,
                     'IsActive'=>1,
@@ -57,7 +57,7 @@ class CreateHosttypesTable extends Migration {
         DB::table('HostTypes')->insert(
                 array(
                     'HostTypes_id' => 'LAP',
-                    'Label'=> 'Laptop',
+                    'Name'=> 'Laptop',
                     'DescriptionText' => 'Laptop',
                     'IsDeleted'=>0,
                     'IsActive'=>1,
@@ -68,7 +68,7 @@ class CreateHosttypesTable extends Migration {
         DB::table('HostTypes')->insert(
                 array(
                     'HostTypes_id' => 'SEV',
-                    'Label'=> 'Virtual server',
+                    'Name'=> 'Virtual server',
                     'DescriptionText' => 'Virtual server',
                     'IsDeleted'=>0,
                     'IsActive'=>1,

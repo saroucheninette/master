@@ -6,7 +6,7 @@ namespace App\Utils;
  */
 class ListUtil {
    
-    protected static $labelKey = 'Label';
+    protected static $labelKey = 'Name';
     /**
      * Retourne une liste pour création d'un <select>
      * @param object/string $object : init class de la liste ou STRING

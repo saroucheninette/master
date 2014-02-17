@@ -14,7 +14,7 @@ class CreateTicketrollbackstatesTable extends Migration {
         Schema::create('TicketRollbackstates', function($table) {
             //$table->increments('id');
             $table->string('RollbackStates_id', 3)->primary();
-            $table->string('Label', 255);
+            $table->string('Name', 255);
             $table->longtext('DescriptionText')->nullable();
             $table->integer('IsDeleted');
             $table->integer('IsActive');
@@ -35,7 +35,7 @@ class CreateTicketrollbackstatesTable extends Migration {
         DB::table('TicketRollbackstates')->insert(
                 array(
                     'RollbackStates_id' => 'PLN',
-                    'Label'=> 'Planned',
+                    'Name'=> 'Planned',
                     'DescriptionText' => 'Planned',
                     'IsDeleted'=>0,
                     'IsActive'=>1,
@@ -46,7 +46,7 @@ class CreateTicketrollbackstatesTable extends Migration {
         DB::table('TicketRollbackstates')->insert(
                 array(
                     'RollbackStates_id' => 'NPL',
-                    'Label'=> 'Non planned',
+                    'Name'=> 'Non planned',
                     'DescriptionText' => 'Non planned',
                     'IsDeleted'=>0,
                     'IsActive'=>1,

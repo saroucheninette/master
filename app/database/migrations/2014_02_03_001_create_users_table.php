@@ -14,6 +14,7 @@ class CreateUsersTable extends Migration {
         Schema::create('Users', function($table) {
             $table->increments('Users_id')->index();
             $table->integer('Profiles_id')->index();
+            $table->integer('Entities_id')->index();
             $table->string('Alias', 50);
             $table->string('Email', 500);
             $table->string('Password', 100)->nullable();
@@ -45,6 +46,8 @@ class CreateUsersTable extends Migration {
                  ->references('Users_id')->on('Users');
            $table->foreign('Profiles_id')
                    ->references('Profiles_id')->on('Profiles');
+           $table->foreign('Entities_id')
+                    ->references('Entities_id')->on('Entities');
 
         });
         
@@ -52,6 +55,7 @@ class CreateUsersTable extends Migration {
         DB::table('Users')->insert(
                 array(
                     'Profiles_id' => 1, //Administrator
+                    'Entities_id' => 1, //Master
                     'Alias' => 'system',
                     'Email' => 'system',
                     'Password' => Hash::make('system'),
@@ -66,6 +70,7 @@ class CreateUsersTable extends Migration {
         DB::table('Users')->insert(
                 array(
                     'Profiles_id' => 1, //Administrator
+                    'Entities_id' => 1, //Master
                     'Alias' => 'admin',
                     'Email' => 'admin@changethismail.fr',
                     'Password' => Hash::make('admin'),

@@ -14,7 +14,7 @@ class CreateTicketenvironmentsTable extends Migration {
         Schema::create('TicketEnvironments', function($table) {
             $table->increments('Environments_id');
             $table->integer('Environments_parent_id')->nullable();
-            $table->string('Label', 255);
+            $table->string('Name', 255);
             $table->longtext('DescriptionText')->nullable();
             $table->integer('IsDeleted');
             $table->integer('IsActive');
@@ -34,7 +34,7 @@ class CreateTicketenvironmentsTable extends Migration {
         $dateTime = new DateTime('now');
         DB::table('TicketEnvironments')->insert(
                 array(
-                    'Label'=> 'Demat',
+                    'Name'=> 'Demat',
                     'DescriptionText' => 'Demat',
                     'IsDeleted'=>0,
                     'IsActive'=>1,
@@ -44,7 +44,7 @@ class CreateTicketenvironmentsTable extends Migration {
                 ));
         DB::table('TicketEnvironments')->insert(
                 array(
-                    'Label'=> 'Logitours',
+                    'Name'=> 'Logitours',
                     'DescriptionText' => 'Logitours',
                     'IsDeleted'=>0,
                     'IsActive'=>1,
@@ -54,7 +54,7 @@ class CreateTicketenvironmentsTable extends Migration {
                 ));
         DB::table('TicketEnvironments')->insert(
                 array(
-                    'Label'=> 'TravelBox',
+                    'Name'=> 'TravelBox',
                     'DescriptionText' => 'TravelBox',
                     'IsDeleted'=>0,
                     'IsActive'=>1,

@@ -14,7 +14,7 @@ class CreateTicketprioritiesTable extends Migration {
         Schema::create('TicketPriorities', function($table) {
             //$table->increments('id');
             $table->string('Priorities_id', 3)->primary();
-            $table->string('Label', 255);
+            $table->string('Name', 255);
             $table->longtext('DescriptionText')->nullable();
             $table->integer('IsDeleted');
             $table->integer('IsActive');
@@ -36,7 +36,7 @@ class CreateTicketprioritiesTable extends Migration {
         DB::table('TicketPriorities')->insert(
                 array(
                     'Priorities_id' => 'LOW',
-                    'Label'=> 'Low',
+                    'Name'=> 'Low',
                     'DescriptionText' => 'Low priority',
                     'IsDeleted'=>0,
                     'IsActive'=>1,
@@ -47,7 +47,7 @@ class CreateTicketprioritiesTable extends Migration {
         DB::table('TicketPriorities')->insert(
                 array(
                     'Priorities_id' => 'MED',
-                    'Label'=> 'Medium',
+                    'Name'=> 'Medium',
                     'DescriptionText' => 'Medium priority',
                     'IsDeleted'=>0,
                     'IsActive'=>1,
@@ -58,7 +58,7 @@ class CreateTicketprioritiesTable extends Migration {
         DB::table('TicketPriorities')->insert(
                 array(
                     'Priorities_id' => 'HIG',
-                    'Label'=> 'High',
+                    'Name'=> 'High',
                     'DescriptionText' => 'High priority',
                     'IsDeleted'=>0,
                     'IsActive'=>1,

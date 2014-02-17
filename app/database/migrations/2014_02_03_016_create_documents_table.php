@@ -13,6 +13,7 @@ class CreateDocumentsTable extends Migration {
     {
         Schema::create('Documents', function($table) {
             $table->increments('Documents_id');
+            $table->integer('Entities_id')->index();
             $table->string('Name', 100);
             $table->longtext('DescriptionText');
             $table->longtext('DescriptionHtml');
@@ -30,6 +31,8 @@ class CreateDocumentsTable extends Migration {
                  ->references('Users_id')->on('users');
            $table->foreign('Users_id_updated')
                  ->references('Users_id')->on('users');
+           $table->foreign('Entities_id')
+                    ->references('Entities_id')->on('Entities');
         });
     }
 

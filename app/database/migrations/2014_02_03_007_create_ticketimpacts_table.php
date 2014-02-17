@@ -14,7 +14,7 @@ class CreateTicketimpactsTable extends Migration {
         Schema::create('TicketImpacts', function($table) {
             //$table->increments('id');
             $table->string('Impacts_id', 3)->primary();
-            $table->string('Label', 255);
+            $table->string('Name', 255);
             $table->longtext('DescriptionText')->nullable();
             $table->integer('IsDeleted');
             $table->integer('IsActive');
@@ -35,7 +35,7 @@ class CreateTicketimpactsTable extends Migration {
         DB::table('TicketImpacts')->insert(
                 array(
                     'Impacts_id' => 'LOW',
-                    'Label'=> 'Low',
+                    'Name'=> 'Low',
                     'DescriptionText' => 'Low impact',
                     'IsDeleted'=>0,
                     'IsActive'=>1,
@@ -46,7 +46,7 @@ class CreateTicketimpactsTable extends Migration {
         DB::table('TicketImpacts')->insert(
                 array(
                     'Impacts_id' => 'MED',
-                    'Label'=> 'Medium',
+                    'Name'=> 'Medium',
                     'DescriptionText' => 'Medium impact',
                     'IsDeleted'=>0,
                     'IsActive'=>1,
@@ -57,7 +57,7 @@ class CreateTicketimpactsTable extends Migration {
         DB::table('TicketImpacts')->insert(
                 array(
                     'Impacts_id' => 'HIG',
-                    'Label'=> 'High',
+                    'Name'=> 'High',
                     'DescriptionText' => 'High impact',
                     'IsDeleted'=>0,
                     'IsActive'=>1,

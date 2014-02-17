@@ -13,7 +13,7 @@ class CreateAuthenticationtypesTable extends Migration {
     {
         Schema::create('AuthenticationTypes', function($table) {
             $table->string('AuthenticationTypes_id', 5)->primary();
-            $table->string('Label', 255);
+            $table->string('Name', 255);
             $table->longtext('DescriptionText')->nullable();
             $table->integer('IsDeleted');
             $table->integer('IsActive');
@@ -35,7 +35,7 @@ class CreateAuthenticationtypesTable extends Migration {
          DB::table('AuthenticationTypes')->insert(
                 array(
                     'AuthenticationTypes_id' => 'DBA',
-                    'Label' => 'Database',
+                    'Name' => 'Database',
                     'DescriptionText' => 'Simple authentication',
                     'IsDeleted'=>0,
                     'IsActive'=>1,
@@ -46,7 +46,7 @@ class CreateAuthenticationtypesTable extends Migration {
          DB::table('AuthenticationTypes')->insert(
                 array(
                     'AuthenticationTypes_id' => 'LDAP',
-                    'Label' => 'LDAP',
+                    'Name' => 'LDAP',
                     'DescriptionText' => 'LDAP authentication',
                     'IsDeleted'=>0,
                     'IsActive'=>1,

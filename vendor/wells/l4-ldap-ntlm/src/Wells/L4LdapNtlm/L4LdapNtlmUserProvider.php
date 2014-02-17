@@ -76,13 +76,15 @@ class L4LdapNtlmUserProvider implements UserProviderInterface
 	{
             $user = \App\Models\Users::find($identifier);
             if(empty($user)) return;
-                       
+            
+            //generic user for Auth:user()
             return new GenericUser(array(
                'id'         => $user->Users_id,
                 'username'  => $user->Alias,
                 'CN'        => $user->CN,
                 'realname' => $user->FistName.' '.$user->LastName,
-                'profile' => $user->Profiles_id
+                'profile' => $user->Profiles_id,
+                'entity' => \App\Models\Entities::find($user->Entities_id)->Name
                      
              ));
 	}
@@ -151,45 +153,59 @@ class L4LdapNtlmUserProvider implements UserProviderInterface
             $username = $entry[$this->config->LDAP_AttribDNAlias][0];
             //Date actuelle
             $dateTime = new \DateTime('now');
-            //DATAS
-             $data = array(
-                    'CN' => $entry['dn'],
-                    'Alias' => $username,
-                    'Email' => $entry['mail'][0],
-                    'LastName' => $entry['sn'][0],
-                    'FirstName' => $entry['givenname'][0],
-                    'Title' => $entry['title'][0],
-                    'Company' => $entry['company'][0],
-                    'Department' => $entry['department'][0],
-                    'PhoneNumber1' => $entry['telephonenumber'][0],
-                    'PhoneNumber2' => $entry['facsimiletelephonenumber'][0]
-                );
             
             //Check if exist in database
             $user = \App\Models\Users::where('Alias', '=', $username)->first();
             if(empty($user)) {
+                $user = new \App\Models\Users();
+                $user->CN =  $entry['dn'];
+                $user->Alias = $username;
+                $user->Email = $entry['mail'][0];
+                $user->LastName = $entry['sn'][0];
+                $user->FirstName = $entry['givenname'][0];
+                $user->Title = $entry['title'][0];
+                $user->Company = $entry['company'][0];
+                $user->Department = $entry['department'][0];
+                $user->PhoneNumber1 = $entry['telephonenumber'][0];
+                $user->PhoneNumber2 = $entry['facsimiletelephonenumber'][0];
+
                 //Profile par défaut
                 $profile_id = \App\Models\Profiles::where('Code', '=', 'READONLY_PROFILE')->first()->Profiles_id;
-                $user = new \App\Models\Users();
-                $data['Profiles_id'] = $profile_id;
-                $data['IsDeleted'] = 0;
-                $data['IsActive'] = 1;
-                $data['IsPublic'] = 1;
-                $data['DateCreated'] = $dateTime->format('Y-m-d H:i:s');
-                $data['Users_id_created'] = 1;
-                $user = $user->create($data);
+                
+                //Création de l'entité si inexistante
+                $entity_id = 1;
+                $entity = \App\Models\Entities::where('Name', '=', $user->Company)->first();
+                if(empty($entity))
+                {
+                    $entity = new \App\Models\Entities();
+                    $entity->Name = $user->Company;
+                    $entity->IsDeleted =0;
+                    $entity->IsActive =1;
+                    $entity->IsPublic =1;
+                    $entity->DateCreated = $dateTime->format('Y-m-d H:i:s');
+                    $entity->Users_id_created = 1;
+                    
+                    $entity->save_wc();
+                }
+                $entity_id = $entity->Entities_id;
+                
+                $user->Profiles_id = $profile_id;
+                $user->Entities_id = $entity_id;
+                $user->IsDeleted = 0;
+                $user->IsActive = 1;
+                $user->IsPublic = 1;
+                $user->DateCreated = $dateTime->format('Y-m-d H:i:s');
+                $user->Users_id_created = 1;
+                $user->save_wc();
            }
            else
            {
-               $data['DateUpdated'] = $dateTime->format('Y-m-d H:i:s');
-               $data['Users_id_updated'] = 1;
-               $user->update($data);
+               $user->DateUpdated = $dateTime->format('Y-m-d H:i:s');
+               $user->Users_id_updated = 1;
+               $user->save_wc();
            }
            
            $this->model =  $user;
-           
-           
-                
         }
 	/**
 	 * Checks group membership of the user, searching

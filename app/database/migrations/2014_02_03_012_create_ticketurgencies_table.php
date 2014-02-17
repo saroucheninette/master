@@ -14,7 +14,7 @@ class CreateTicketurgenciesTable extends Migration {
         Schema::create('TicketUrgencies', function($table) {
             //$table->increments('id');
             $table->string('Urgencies_id', 3)->primary();
-            $table->string('Label', 255);
+            $table->string('Name', 255);
             $table->longtext('DescriptionText')->nullable();
             $table->integer('IsDeleted');
             $table->integer('IsActive');
@@ -35,7 +35,7 @@ class CreateTicketurgenciesTable extends Migration {
          DB::table('TicketUrgencies')->insert(
                 array(
                     'Urgencies_id' => 'LOW',
-                    'Label'=> 'Low',
+                    'Name'=> 'Low',
                     'DescriptionText' => 'Low urgency',
                     'IsDeleted'=>0,
                     'IsActive'=>1,
@@ -46,7 +46,7 @@ class CreateTicketurgenciesTable extends Migration {
         DB::table('TicketUrgencies')->insert(
                 array(
                     'Urgencies_id' => 'MED',
-                    'Label'=> 'Medium',
+                    'Name'=> 'Medium',
                     'DescriptionText' => 'Medium urgency',
                     'IsDeleted'=>0,
                     'IsActive'=>1,
@@ -57,7 +57,7 @@ class CreateTicketurgenciesTable extends Migration {
         DB::table('TicketUrgencies')->insert(
                 array(
                     'Urgencies_id' => 'HIG',
-                    'Label'=> 'High',
+                    'Name'=> 'High',
                     'DescriptionText' => 'High urgency',
                     'IsDeleted'=>0,
                     'IsActive'=>1,

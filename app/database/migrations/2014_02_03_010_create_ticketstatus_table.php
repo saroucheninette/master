@@ -14,7 +14,7 @@ class CreateTicketstatusTable extends Migration {
         Schema::create('TicketStatus', function($table) {
             //$table->increments('id');
             $table->string('Status_id', 3)->primary();
-            $table->string('Label', 255);
+            $table->string('Name', 255);
             $table->longtext('DescriptionText')->nullable();
             $table->integer('IsDeleted');
             $table->integer('IsActive');
@@ -35,7 +35,7 @@ class CreateTicketstatusTable extends Migration {
         DB::table('TicketStatus')->insert(
                 array(
                     'Status_id' => 'NEW',
-                    'Label'=> 'New',
+                    'Name'=> 'New',
                     'DescriptionText' => 'New ticket',
                     'IsDeleted'=>0,
                     'IsActive'=>1,
@@ -46,7 +46,7 @@ class CreateTicketstatusTable extends Migration {
         DB::table('TicketStatus')->insert(
                 array(
                     'Status_id' => 'PRO',
-                    'Label'=> 'In progress',
+                    'Name'=> 'In progress',
                     'DescriptionText' => 'In progress',
                     'IsDeleted'=>0,
                     'IsActive'=>1,
@@ -57,7 +57,7 @@ class CreateTicketstatusTable extends Migration {
         DB::table('TicketStatus')->insert(
                 array(
                     'Status_id' => 'ASS',
-                    'Label'=> 'Assignated',
+                    'Name'=> 'Assignated',
                     'DescriptionText' => 'Assignated',
                     'IsDeleted'=>0,
                     'IsActive'=>1,
@@ -68,7 +68,7 @@ class CreateTicketstatusTable extends Migration {
         DB::table('TicketStatus')->insert(
                 array(
                     'Status_id' => 'WAI',
-                    'Label'=> 'Pending',
+                    'Name'=> 'Pending',
                     'DescriptionText' => 'Pending',
                     'IsDeleted'=>0,
                     'IsActive'=>1,
@@ -79,7 +79,7 @@ class CreateTicketstatusTable extends Migration {
         DB::table('TicketStatus')->insert(
                 array(
                     'Status_id' => 'CLO',
-                    'Label'=> 'Closed',
+                    'Name'=> 'Closed',
                     'DescriptionText' => 'Closed',
                     'IsDeleted'=>0,
                     'IsActive'=>1,
@@ -90,7 +90,7 @@ class CreateTicketstatusTable extends Migration {
         DB::table('TicketStatus')->insert(
                 array(
                     'Status_id' => 'RES',
-                    'Label'=> 'Resolved',
+                    'Name'=> 'Resolved',
                     'DescriptionText' => 'Resolved',
                     'IsDeleted'=>0,
                     'IsActive'=>1,
@@ -101,7 +101,7 @@ class CreateTicketstatusTable extends Migration {
         DB::table('TicketStatus')->insert(
                 array(
                     'Status_id' => 'URE',
-                    'Label'=> 'Unsolved',
+                    'Name'=> 'Unsolved',
                     'DescriptionText' => 'Unsolved',
                     'IsDeleted'=>0,
                     'IsActive'=>1,

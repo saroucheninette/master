@@ -14,7 +14,7 @@ class CreateTicketreproductibilitiesTable extends Migration {
         Schema::create('TicketReproductibilities', function($table) {
            // $table->increments('id');
             $table->string('Reproductibilities_id', 3)->primary();
-            $table->string('Label', 255);
+            $table->string('Name', 255);
             $table->longtext('DescriptionText')->nullable();
             $table->integer('IsDeleted');
             $table->integer('IsActive');
@@ -35,7 +35,7 @@ class CreateTicketreproductibilitiesTable extends Migration {
         DB::table('TicketReproductibilities')->insert(
                 array(
                     'Reproductibilities_id' => 'ALW',
-                    'Label'=> 'Always',
+                    'Name'=> 'Always',
                     'DescriptionText' => 'Always',
                     'IsDeleted'=>0,
                     'IsActive'=>1,
@@ -46,7 +46,7 @@ class CreateTicketreproductibilitiesTable extends Migration {
         DB::table('TicketReproductibilities')->insert(
                 array(
                     'Reproductibilities_id' => 'URP',
-                    'Label'=> 'Unreproducible',
+                    'Name'=> 'Unreproducible',
                     'DescriptionText' => 'Unreproducible',
                     'IsDeleted'=>0,
                     'IsActive'=>1,

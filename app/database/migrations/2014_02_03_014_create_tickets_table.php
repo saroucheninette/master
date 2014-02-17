@@ -13,6 +13,7 @@ class CreateTicketsTable extends Migration {
     {
         Schema::create('Tickets', function($table) {
             $table->increments('Tickets_id');
+            $table->integer('Entities_id')->index();
             $table->string('Name', 100)->index();
             $table->longtext('DescriptionText');
             $table->longtext('DescriptionHtml');
@@ -71,6 +72,8 @@ class CreateTicketsTable extends Migration {
                     ->references('TicketTypes_id')->on('TicketTypes');
             $table->foreign('RollbackStates_id')
                     ->references('RollbackStates_id')->on('TicketRollbackStates');
+            $table->foreign('Entities_id')
+                    ->references('Entities_id')->on('Entities');
 
         });
     }

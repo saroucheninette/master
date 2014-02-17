@@ -14,6 +14,7 @@ return array(
     'update_action' => 'Update field ',
     'create_action' => 'Create ',
     'delete_action' => 'Delete ',
-    'history' => 'Historical'
+    'history' => 'Historical',
+    'entity' => 'Entity'
     
 );

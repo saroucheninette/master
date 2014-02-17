@@ -14,6 +14,7 @@ return array(
     'update_action' => "Mise à jour de l'élément ",
     'create_action' => 'Création du ',
     'delete_action' => 'Suppression du ',
-    'history' => 'Historique'
+    'history' => 'Historique',
+    'entity' => 'Société'
 
 );

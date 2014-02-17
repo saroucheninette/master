@@ -14,7 +14,7 @@ class CreateHostcategoriesTable extends Migration {
         Schema::create('HostCategories', function($table) {
             //$table->increments('id');
             $table->string('HostCategories_id', 5)->primary();
-            $table->string('Label', 255);
+            $table->string('Name', 255);
             $table->longtext('DescriptionText')->nullable();
             $table->integer('IsDeleted');
             $table->integer('IsActive');
@@ -35,7 +35,7 @@ class CreateHostcategoriesTable extends Migration {
         DB::table('HostCategories')->insert(
                 array(
                     'HostCategories_id' => 'PROD',
-                    'Label'=> 'Production',
+                    'Name'=> 'Production',
                     'DescriptionText' => 'Production',
                     'IsDeleted'=>0,
                     'IsActive'=>1,
@@ -46,7 +46,7 @@ class CreateHostcategoriesTable extends Migration {
         DB::table('HostCategories')->insert(
                 array(
                     'HostCategories_id' => 'PREP',
-                    'Label'=> 'Pre-Production',
+                    'Name'=> 'Pre-Production',
                     'DescriptionText' => 'Pre-Production',
                     'IsDeleted'=>0,
                     'IsActive'=>1,
@@ -57,7 +57,7 @@ class CreateHostcategoriesTable extends Migration {
         DB::table('HostCategories')->insert(
                 array(
                     'HostCategories_id' => 'DEV',
-                    'Label'=> 'Development',
+                    'Name'=> 'Development',
                     'DescriptionText' => 'Development',
                     'IsDeleted'=>0,
                     'IsActive'=>1,
@@ -68,7 +68,7 @@ class CreateHostcategoriesTable extends Migration {
         DB::table('HostCategories')->insert(
                 array(
                     'HostCategories_id' => 'UAT',
-                    'Label'=> 'Evaluation',
+                    'Name'=> 'Evaluation',
                     'DescriptionText' => 'Evaluation',
                     'IsDeleted'=>0,
                     'IsActive'=>1,

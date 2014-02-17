@@ -132,6 +132,15 @@ use \Illuminate\Support\Facades\DB;
    }
    
    /**
+    * Appel de la fonction save() de base / pas de controle
+    */
+    public function save_wc(array $options = array()) {
+        //Sauvegarde de base
+        $saved = parent::save($options);
+        return $saved;
+    }
+   
+   /**
     * Overide de la fonction delete afin de prendre en compte l'historique
     */
    public function delete() {

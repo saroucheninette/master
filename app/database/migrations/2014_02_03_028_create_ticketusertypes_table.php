@@ -14,7 +14,7 @@ class CreateTicketusertypesTable extends Migration {
         Schema::create('TicketUserTypes', function($table) {
             //$table->increments('id');
             $table->string('TicketUserTypes_id', 6)->primary();
-            $table->string('Label', 255);
+            $table->string('Name', 255);
             $table->longtext('DescriptionText')->nullable();
             $table->integer('IsDeleted');
             $table->integer('IsActive');

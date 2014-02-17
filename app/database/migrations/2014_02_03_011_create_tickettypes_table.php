@@ -13,7 +13,7 @@ class CreateTickettypesTable extends Migration {
     {
         Schema::create('TicketTypes', function($table) {
             $table->increments('TicketTypes_id');
-            $table->string('Label', 255);
+            $table->string('Name', 255);
             $table->longtext('DescriptionText')->nullable();
             $table->integer('IsDeleted');
             $table->integer('IsActive');
@@ -33,7 +33,7 @@ class CreateTickettypesTable extends Migration {
         $dateTime = new DateTime('now');
         DB::table('TicketTypes')->insert(
                 array(
-                    'Label'=> 'Patch',
+                    'Name'=> 'Patch',
                     'DescriptionText' => 'Patch',
                     'IsDeleted'=>0,
                     'IsActive'=>1,
@@ -43,7 +43,7 @@ class CreateTickettypesTable extends Migration {
                 ));
          DB::table('TicketTypes')->insert(
                 array(
-                    'Label'=> 'Complete version',
+                    'Name'=> 'Complete version',
                     'DescriptionText' => 'Complete version',
                     'IsDeleted'=>0,
                     'IsActive'=>1,
@@ -53,7 +53,7 @@ class CreateTickettypesTable extends Migration {
                 ));
           DB::table('TicketTypes')->insert(
                 array(
-                    'Label'=> 'Data update',
+                    'Name'=> 'Data update',
                     'DescriptionText' => 'Data update',
                     'IsDeleted'=>0,
                     'IsActive'=>1,

@@ -14,7 +14,7 @@ class CreateTicketcategoriesTable extends Migration {
         Schema::create('TicketCategories', function($table) {
             //$table->increments('id');
             $table->string('Categories_id', 3)->primary();
-            $table->string('Label', 255);
+            $table->string('Name', 255);
             $table->longtext('DescriptionText')->nullable();
             $table->integer('IsDeleted');
             $table->integer('IsActive');
@@ -37,7 +37,7 @@ class CreateTicketcategoriesTable extends Migration {
          DB::table('TicketCategories')->insert(
                 array(
                     'Categories_id' => 'BUG',
-                    'Label'=> 'Bug',
+                    'Name'=> 'Bug',
                     'DescriptionText' => 'Bug category : for reporting a bug',
                     'IsDeleted'=>0,
                     'IsActive'=>1,
@@ -48,7 +48,7 @@ class CreateTicketcategoriesTable extends Migration {
          DB::table('TicketCategories')->insert(
                 array(
                     'Categories_id' => 'MEP',
-                    'Label'=> 'MEP',
+                    'Name'=> 'MEP',
                     'DescriptionText' => 'MEP category : for package release on production',
                     'IsDeleted'=>0,
                     'IsActive'=>1,
@@ -59,7 +59,7 @@ class CreateTicketcategoriesTable extends Migration {
           DB::table('TicketCategories')->insert(
                 array(
                     'Categories_id' => 'MEV',
-                    'Label'=> 'MEV',
+                    'Name'=> 'MEV',
                     'DescriptionText' => 'MEV category : for package release on preproduction',
                     'IsDeleted'=>0,
                     'IsActive'=>1,
@@ -70,7 +70,7 @@ class CreateTicketcategoriesTable extends Migration {
           DB::table('TicketCategories')->insert(
                 array(
                     'Categories_id' => '701',
-                    'Label'=> '701',
+                    'Name'=> '701',
                     'DescriptionText' => '701 category : for reporting a big problem',
                     'IsDeleted'=>0,
                     'IsActive'=>1,
@@ -81,7 +81,7 @@ class CreateTicketcategoriesTable extends Migration {
           DB::table('TicketCategories')->insert(
                 array(
                     'Categories_id' => 'PRO',
-                    'Label'=> 'Project',
+                    'Name'=> 'Project',
                     'DescriptionText' => 'Project category : for project',
                     'IsDeleted'=>0,
                     'IsActive'=>1,
